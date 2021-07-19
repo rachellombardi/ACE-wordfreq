@@ -58,7 +58,7 @@ everywhere you see "Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt") shoul
 replaced with a variable. HTCondor's variable syntax looks like this: `$(variablename)`
 
 For this example, we can use the variable `$(book)`, which you can see in the 
-`wordfreq-books.submit` file:
+`wordcount-books.submit` file:
 
 	$ cat wordcount-alice.submit
 
@@ -91,7 +91,7 @@ sending the output to a file:
 
 We're now ready to submit all of our jobs. 
 
-	$ condor_submit wordfreq-books.submit
+	$ condor_submit wordcount-books.submit
 
 This will now submit five jobs (one for each book on our list). Once all five 
 have finished running, we should see "counts" files for each book in the directory. 
