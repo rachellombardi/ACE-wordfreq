@@ -1,7 +1,8 @@
-executable = wordcount.py
-arguments = $(book)
+executable = 
+arguments = 
 
-transfer_input_files    = $(book)
+transfer_input_files    = 
+
 should_transfer_files   = Yes
 when_to_transfer_output = ON_EXIT
 
@@ -14,4 +15,4 @@ request_cpus   = 1
 request_memory = 512MB
 request_disk   = 512MB
 
-queue book from book.list
+queue
