@@ -1,7 +1,8 @@
-executable = wordcount.py
-arguments = Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt
+executable = 
+arguments = 
 
-transfer_input_files    = Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt
+transfer_input_files = 
+
 should_transfer_files   = Yes
 when_to_transfer_output = ON_EXIT
 
