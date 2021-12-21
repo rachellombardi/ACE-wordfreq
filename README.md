@@ -23,7 +23,7 @@ produce within an HTCondor job. For now, remove the output:
 To submit a single job that runs this command and analyzes the 
 Alice's Adventures in Wonderland book, we need to translate this command 
 into HTCondor submit file syntax. The two main components we care about 
-are the actual command, and the needed input files. 
+are (1) the actual command and (2) the needed input files. 
 
 The command gets turned into the submit file `executable` and `arguments` options: 
 
@@ -39,7 +39,7 @@ There are other submit file options that control other aspects of the job, like
 where to save error and logging information, and how many resources to request per 
 job. 
 
-This tutorial has a sample submit file (`wordcount.sub`) with most of this information filled in: 
+This tutorial has a sample submit file (`wordcount.sub`) with most of these submit file options filled in: 
 
 	$ cat wordcount.sub
 
@@ -107,8 +107,11 @@ Create a copy of our existing submit file, that we can use for this job submissi
 	$ cp wordcount.sub wordcount-many.sub
 
 Then, open the file with a text editor and go to the end. We want to tell the 
-`queue` keyword to use our list of inputs to submit jobs. This syntax looks like 
-this: 
+`queue` keyword to use our list of inputs to submit jobs. The default syntax looks like this: 
+
+ queue <item> from <list> 
+ 
+ Therefore, when we modify this syntax to fit our example, we get: 
 
 	queue book from book.list 
 
@@ -124,7 +127,7 @@ So the following lines in the submit file should be changed to use the variable 
 
 	arguments = $(book)
 
-	transfer_input_files    = $(book)
+	transfer_input_files = $(book)
 
 ### Submit and Monitor the Job
 
