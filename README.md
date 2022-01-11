@@ -10,13 +10,13 @@ usage varies from book to book or author to author.
 We can analyze one book by running the `wordcount.py` script, with the 
 name of the book we want to analyze: 
 
-	$ ./wordcount.py Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt 
+	$ ./wordcount.py Alice_in_Wonderland.txt 
 
 If you run the `ls` command, you should see a new file with the prefix `counts`
 which has the results of this python script. This is the output we want to 
 produce within an HTCondor job. For now, remove the output: 
 
-	$ rm counts.Alices_Adventures_in_Wonderland_by_Lewis_Carroll.tsv
+	$ rm counts.Alice_in_Wonderland.tsv
 
 ### Create a Submit File
 
@@ -28,12 +28,12 @@ are (1) the actual command and (2) the needed input files.
 The command gets turned into the submit file `executable` and `arguments` options: 
 
 	executable = wordcount.py
-	arguments = Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt	
+	arguments = Alice_in_Wonderland.txt	
 
-The input file for this job is the `Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt` 
+The input file for this job is the `Alice_in_Wonderland.txt` 
 text file. We include that in the following submit file option: 
 
-	transfer_input_files    = Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt
+	transfer_input_files    = Alice_in_Wonderland.txt
 
 There are other submit file options that control other aspects of the job, like 
 where to save error and logging information, and how many resources to request per 
@@ -72,7 +72,7 @@ After saving the submit file, submit the job:
 	$ condor_submit wordcount.submit
 
 You can check the job's progress using `condor_q`. Once it finishes, you should 
-see the same `counts.Alices_Adventures_in_Wonderland_by_Lewis_Carroll.tsv` output. 
+see the same `counts.Alice_in_Wonderland.tsv` output. 
 
 ## Analyzing Multiple Books
 
@@ -120,7 +120,7 @@ file, HTCondor will create a job. Each item can be referenced elsewhere in the s
 file using the `book` variable name. 
 
 Therefore, every time we used the name of the book in our submit file (in the previous example, 
-everywhere you see "Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt") should be 
+everywhere you see "Alice_in_Wonderland.txt") should be 
 replaced with a variable. HTCondor's variable syntax looks like this: `$(variablename)`
 
 So the following lines in the submit file should be changed to use the variable `$(book)`: 
