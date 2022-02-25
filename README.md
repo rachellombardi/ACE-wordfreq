@@ -1,4 +1,4 @@
-# Counting Words in Files
+# Wordcount Tutorial for Submitting Multiple Jobs
 
 Imagine you have a collection of books, and you want to analyze how word
 usage varies from book to book or author to author. 
