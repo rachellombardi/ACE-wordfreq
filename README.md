@@ -10,30 +10,30 @@ usage varies from book to book or author to author.
 We can analyze one text by running the `wordcount.py` script, with the 
 name of the book we want to analyze: 
 
-	$ ./wordcount.py Alice_in_Wonderland.txt 
+	$ ./wordcount.py Flu_Fall_2022.txt
 
 If you run the `ls` command, you should see a new file with the prefix `counts`
 which has the results of this python script. This is the output we want to 
 produce within an HTCondor job. For now, remove the output: 
 
-	$ rm counts.Alice_in_Wonderland.tsv
+	$ rm counts.Flu_Fall_2022.tsv
 
 ### Create a Submit File
 
 To submit a single job that runs this command and analyzes the 
-Alice's Adventures in Wonderland book, we need to translate this command 
+Flu_Fall_2022 manuscript, we need to translate this command 
 into HTCondor submit file syntax. The two main components we care about 
 are (1) the actual command and (2) the needed input files. 
 
 The command gets turned into the submit file `executable` and `arguments` options: 
 
 	executable = wordcount.py
-	arguments = Alice_in_Wonderland.txt	
+	arguments = Flu_Fall_2022.txt	
 
-The input file for this job is the `Alice_in_Wonderland.txt` 
+The input file for this job is the `Flu_Fall_2022.txt` 
 text file. We include that in the following submit file option: 
 
-	transfer_input_files    = Alice_in_Wonderland.txt
+	transfer_input_files    = Flu_Fall_2022.txt
 
 There are other submit file options that control other aspects of the job, like 
 where to save error and logging information, and how many resources to request per 
@@ -47,15 +47,11 @@ This tutorial has a sample submit file (`wordcount.sub`) with most of these subm
 	arguments = 
 
 	transfer_input_files    = 
-	
-	should_transfer_files   = Yes
-	when_to_transfer_output = ON_EXIT
 
 	output        = logs/job.$(Cluster).$(Process).out
 	error         = logs/job.$(Cluster).$(Process).error
 	log           = logs/job.$(Cluster).$(Process).log
 
-	requirements   = (OSGVO_OS_STRING == "RHEL 7")
 	request_cpus   = 1
 	request_memory = 512MB
 	request_disk   = 512MB
@@ -72,7 +68,7 @@ After saving the submit file, submit the job:
 	$ condor_submit wordcount.submit
 
 You can check the job's progress using `condor_q`. Once it finishes, you should 
-see the same `counts.Alice_in_Wonderland.tsv` output. 
+see the same `counts.Flu_Fall_2022.tsv` output. 
 
 ## Analyzing Multiple Books
 
@@ -120,7 +116,7 @@ file, HTCondor will create a job. Each item can be referenced elsewhere in the s
 file using the `book` variable name. 
 
 Therefore, every time we used the name of the book in our submit file (in the previous example, 
-everywhere you see "Alice_in_Wonderland.txt") should be 
+everywhere you see "Flu_Fall_2022.txt") should be 
 replaced with a variable. HTCondor's variable syntax looks like this: `$(variablename)`
 
 So the following lines in the submit file should be changed to use the variable `$(book)`: 
