@@ -21,7 +21,7 @@ produce within an HTCondor job. For now, remove the output:
 ### Create a Submit File
 
 To submit a single job that runs this command and analyzes the 
-Flu_Fall_2022 manuscript, we need to translate this command 
+Flu_Fall_2022 text, we need to translate this command 
 into HTCondor submit file syntax. The two main components we care about 
 are (1) the actual command and (2) the needed input files. 
 
@@ -91,12 +91,12 @@ want each job to analyze a different book, so our list should just contain the
 names of these text files. We can easily create this list by using an `ls` command and 
 sending the output to a file: 
 
-	$ ls *.txt > book.list 
+	$ ls *.txt > text.list 
 
 ### Modify the Submit File
 
 Next, we will make changes to our submit file so that it submits a job for 
-each book title in our list (seen in the `book.list` file). 
+each book title in our list (seen in the `text.list` file). 
 
 Create a copy of our existing submit file, that we can use for this job submission. 
 
@@ -109,21 +109,21 @@ Then, open the file with a text editor and go to the end. We want to tell the
  
  Therefore, when we modify this syntax to fit our example, we get: 
 
-	queue book from book.list 
+	queue book from text.list 
 
-This statement works a little bit like a for loop. For every item in the `book.list` 
+This statement works a little bit like a for loop. For every item in the `text.list` 
 file, HTCondor will create a job. Each item can be referenced elsewhere in the submit 
-file using the `book` variable name. 
+file using the `text` variable name. 
 
-Therefore, every time we used the name of the book in our submit file (in the previous example, 
+Therefore, every time we used the name of the text in our submit file (in the previous example, 
 everywhere you see "Flu_Fall_2022.txt") should be 
 replaced with a variable. HTCondor's variable syntax looks like this: `$(variablename)`
 
-So the following lines in the submit file should be changed to use the variable `$(book)`: 
+So the following lines in the submit file should be changed to use the variable `$(text)`: 
 
-	arguments = $(book)
+	arguments = $(text)
 
-	transfer_input_files = $(book)
+	transfer_input_files = $(text)
 
 ### Submit and Monitor the Job
 
