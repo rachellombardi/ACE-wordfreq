@@ -1,13 +1,13 @@
-# Wordcount Tutorial for Submitting Multiple Jobs
+# ACE Consortium Wordcount Tutorial for Submitting Multiple Jobs
 
-Imagine you have a collection of books, and you want to analyze how word
+Imagine you have a collection of books or texts, and you want to analyze how word
 usage varies from book to book or author to author. 
 
-## Analyzing One Book
+## Analyzing One Text
 
 ### Test the Command
 
-We can analyze one book by running the `wordcount.py` script, with the 
+We can analyze one text by running the `wordcount.py` script, with the 
 name of the book we want to analyze: 
 
 	$ ./wordcount.py Alice_in_Wonderland.txt 
