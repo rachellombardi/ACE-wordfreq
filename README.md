@@ -1,4 +1,4 @@
-# ACE Consortium Wordcount Tutorial for Submitting Multiple Jobs
+# 2022 ACE Consortium Meeting Wordcount Tutorial for Submitting Multiple Jobs
 
 Imagine you have a collection of books or texts, and you want to analyze how word
 usage varies from book to book or author to author. 
