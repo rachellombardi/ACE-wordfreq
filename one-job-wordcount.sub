@@ -1,0 +1,14 @@
+executable = wordcount.py
+arguments = Malaria_Su_2021.txt
+
+transfer_input_files = Malaria_Su_2021.txt
+
+log           = job.test.log  
+error         = job.test.err
+output        = job.test.out
+
+request_cpus   = 1
+request_memory = 512MB
+request_disk   = 512MB
+
+queue
