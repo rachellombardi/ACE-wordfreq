@@ -4,9 +4,9 @@ arguments =
 
 transfer_input_files = 
 
-log           = log/job.$(Cluster).$(ProcessID).log
-error         = log/job.$(Cluster).$(ProcessID).err
-output        = log/job.$(Cluster).$(ProcessID).out
+log           = log/job.$(Cluster).$(Process).log
+error         = log/job.$(Cluster).$(Process).err
+output        = log/job.$(Cluster).$(Process).out
 
 request_cpus   = 1
 request_memory = 512MB
